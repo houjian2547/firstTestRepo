@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.study.cloud.dao.PersonDao" >
+    <resultMap id="BaseResultMap" type="com.study.cloud.model.Person" >
+        <id column="ID" property="id" jdbcType="BIGINT" />
+        <result column="NAME" property="name" jdbcType="VARCHAR" />
+        <result column="AGE" property="age" jdbcType="INTEGER" />
+        <result column="MESSAGE" property="message" jdbcType="VARCHAR" />
+
+    </resultMap>
+    <sql id="Base_Column_List" >
+        ID, NAME, AGE, MESSAGE
+    </sql>
+
+    <select id="selectUserById" resultMap="BaseResultMap">
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM
+            person
+        WHERE
+            id = #{id,jdbcType=INTEGER}
+    </select>
+
+</mapper>

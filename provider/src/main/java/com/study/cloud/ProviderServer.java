@@ -1,13 +1,22 @@
 package com.study.cloud;
 
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Scanner;
 
 @SpringBootApplication
 @EnableEurekaClient
+@ComponentScan(basePackages = { "com.study"})
+@MapperScan("com.study.cloud.dao")
+//@EnableTransactionManagement
+//@EnableAutoConfiguration
 public class ProviderServer {
 
     public static void main(String[] args) {

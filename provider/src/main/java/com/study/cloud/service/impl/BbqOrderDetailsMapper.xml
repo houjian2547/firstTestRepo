@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wcy.gen.mapper.BbqOrderDetailsMapper" >
+
+    <resultMap id="BaseResultMap" type="org.wcy.gen.model.BbqOrderDetails" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+        <result column="sku" property="sku" jdbcType="VARCHAR" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="item_num" property="itemNum" jdbcType="INTEGER" />
+        <result column="sell_time" property="sellTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, order_no, sku, price, item_num, sell_time, update_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from bbq_order_details
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from bbq_order_details
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="org.wcy.gen.model.BbqOrderDetails" >
+        insert into bbq_order_details (id, order_no, sku, 
+            price, item_num, sell_time, 
+            update_time)
+        values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{sku,jdbcType=VARCHAR}, 
+            #{price,jdbcType=DECIMAL}, #{itemNum,jdbcType=INTEGER}, #{sellTime,jdbcType=TIMESTAMP}, 
+            #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.wcy.gen.model.BbqOrderDetails" >
+        insert into bbq_order_details
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="orderNo != null" >
+                order_no,
+            </if>
+            <if test="sku != null" >
+                sku,
+            </if>
+            <if test="price != null" >
+                price,
+            </if>
+            <if test="itemNum != null" >
+                item_num,
+            </if>
+            <if test="sellTime != null" >
+                sell_time,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="orderNo != null" >
+                #{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="sku != null" >
+                #{sku,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null" >
+                #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="itemNum != null" >
+                #{itemNum,jdbcType=INTEGER},
+            </if>
+            <if test="sellTime != null" >
+                #{sellTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.wcy.gen.model.BbqOrderDetails" >
+        update bbq_order_details
+        <set >
+            <if test="orderNo != null" >
+                order_no = #{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="sku != null" >
+                sku = #{sku,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null" >
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="itemNum != null" >
+                item_num = #{itemNum,jdbcType=INTEGER},
+            </if>
+            <if test="sellTime != null" >
+                sell_time = #{sellTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="org.wcy.gen.model.BbqOrderDetails" >
+        update bbq_order_details
+        set order_no = #{orderNo,jdbcType=VARCHAR},
+            sku = #{sku,jdbcType=VARCHAR},
+            price = #{price,jdbcType=DECIMAL},
+            item_num = #{itemNum,jdbcType=INTEGER},
+            sell_time = #{sellTime,jdbcType=TIMESTAMP},
+            update_time = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>
